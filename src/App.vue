@@ -5,16 +5,21 @@ export default {
   name: 'App',
   data() {
     return {
-      email: ''
+      email: []
     }
   },
   mounted() {
-    axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-      .then((response) => {
-        this.email = response.data.response;
-        console.log(this.email);
-      })
+    for (let i = 0; i < 10; i++) {
+      axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+        .then((response) => {
+          console.log(response.data.response);
+          this.email.push(response.data.response);
+          console.log(this.email);
+
+        })
+    }
   }
+
 }
 </script>
 
